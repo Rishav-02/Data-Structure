@@ -122,7 +122,7 @@ int main()
         scanf("%d", &v);
         
             BST* c = InorderPredecessor(root, v);
-            if (p)
+            if (c)
                 printf("\nInorder Predecessor of %d is %d\n", v, c->data);
             else
                 printf("Inorder Predecessor of %d does not exist", v);
