@@ -21,8 +21,7 @@ int main()
     int a,ch;
     while(1)
     {
-        // system("cls");
-        printf("\n\t1. Push I Stack\n\t2. Pop I Stack\n\t3. Display I Stack\n\t4. Exit\n\n\tenter your choice : ");
+        printf("\n\t1.Press 1 to Push in Stack\n\t2.Press 2 to Pop in Stack\n\t3.Press 3 to Display in Stack\n\t4.Press 4 to Exit\n\n\tEnter your choice : ");
         scanf("%d",&ch);
         switch(ch)
         {
@@ -36,7 +35,6 @@ int main()
 
             case 3:
             display(&s1);
-            getch();
             break;
 
             case 4:
@@ -44,7 +42,6 @@ int main()
 
             default:
             printf("\n\tInavlid choice");
-            getch();
             break;
         }
     }
@@ -57,8 +54,7 @@ int push(Stack *p)
     if(p->top==M-1)
     {
         printf("\n\tstack is overflow");
-        getch();
-        return;
+        return 0;
     }
     printf("\n\tenter data to push : ");
     scanf("%d",&a);
@@ -71,11 +67,8 @@ int pop(Stack *p)
     if(p->top==-1)
     {
         printf("\n\tStack is underflow");
-        getch();
-        return;
     }
     printf("\n\n\tpopped data : %d",p->stk[p->top]);
-    getch();
     p->top--;
 }
 
@@ -85,8 +78,6 @@ void display(Stack *p)
     if(p->top==-1)
     {
         printf("\n\tStack is underflow");
-
-        return;
     }
     for(i=p->top;i>=0;i--)
     {
@@ -94,4 +85,3 @@ void display(Stack *p)
     }
 
 }
-
