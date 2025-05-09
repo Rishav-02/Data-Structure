@@ -50,7 +50,7 @@ void main()
 int SQEnq(int SQ[],int R)
 {
     int x;
-    if(R >= MAX - 1)
+    if(R == MAX - 1)
     printf("Queue is Full(OverFlow)");
     else{
         printf("\n Enter value to insert: ");
@@ -70,7 +70,7 @@ int SQDeq(int SQ[],int F,int R)
         x = SQ[F];
         printf("\nDeleted Element is %d\n",x);
 
-        if(F==-1)
+        if(F == R)
         F=-1;
         else 
         F++;
