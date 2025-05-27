@@ -14,6 +14,7 @@ void DFS(int graph[MAX][MAX], int visited[MAX], int v, int node) {
     for (int i = 1; i <= v; i++) {
         if (graph[node][i] == 1 && !visited[i]) {
             DFS(graph, visited, v, i);//push
+            // printf("(backtrack to %d) ", node);
         }
     }
 }
@@ -23,6 +24,14 @@ int main() {
     int visited[MAX] = {0};//initially all vertices are unvisited
     int v, edges;
     int src, dest;
+    int isDirected;
+
+    printf("Enter 1 for Directed graph or 0 for Undirected graph: ");
+    scanf("%d", &isDirected);
+    if (isDirected)
+        printf("You have chosen a Directed graph.\n");
+    else 
+        printf("You have chosen an Undirected graph.\n");
 
     printf("Enter number of vertices: ");
     scanf("%d", &v);
@@ -42,7 +51,9 @@ int main() {
     for (int i = 0; i < edges; i++) {
         scanf("%d %d", &src, &dest);
         graph[src][dest] = 1;
-        graph[dest][src] = 1; // Only for Undirected graph
+        if(!isDirected){
+           graph[dest][src] = 1; // Only for Undirected graph
+       }
     }
 
     int start;
