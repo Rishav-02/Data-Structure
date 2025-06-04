@@ -58,6 +58,6 @@ void QuickSort(int A[], int lb, int ub)
   A[j] = key;
 
   //Recursion for left and right subarrays
-  QuickSort(A, lb, j-1);
-  QuickSort(A, j+1, ub);
+  QuickSort(A, lb, j-1);//j-1 to exclude the pivot
+  QuickSort(A, j+1, ub);//j+1 is used to include the pivot in the right subarray
 }
