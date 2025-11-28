@@ -22,9 +22,9 @@ void unionSet(int x, int y) {
 }
 
 // Recursive Kruskal's algorithm
-void kruskalRecursive(Edge edges[], int n, int e, int index, int count) {
+int kruskalRecursive(Edge edges[], int n, int e, int index, int count) {
     if (count == n - 1 || index == e)
-        return;
+        return 0;
 
     int u = edges[index].u;
     int v = edges[index].v;
@@ -33,9 +33,9 @@ void kruskalRecursive(Edge edges[], int n, int e, int index, int count) {
     if (find(u) != find(v)) {
         printf("Edge %d - %d with weight %d\n", u, v, w);
         unionSet(u, v);
-        kruskalRecursive(edges, n, e, index + 1, count + 1);
+        return w + kruskalRecursive(edges, n, e, index + 1, count + 1);
     } else {
-        kruskalRecursive(edges, n, e, index + 1, count);
+        return kruskalRecursive(edges, n, e, index + 1, count);
     }
 }
 
@@ -70,7 +70,9 @@ int main() {
 
     // Run Kruskal’s algorithm
     printf("\nEdges in the Minimum Spanning Tree:\n");
-    kruskalRecursive(edges, n, e, 0, 0);
+    int totalWeight = kruskalRecursive(edges, n, e, 0, 0);
+
+    printf("\nTotal Weight of MST = %d\n", totalWeight);
 
     return 0;
 }
